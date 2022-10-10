@@ -55,9 +55,6 @@ def make_channels(filename):
             blue_channel.green = pixel.green * 0
             blue_channel.blue = pixel.blue
             
-            
-    pass
-
     # Draw out image on screen
     out.show()
 
