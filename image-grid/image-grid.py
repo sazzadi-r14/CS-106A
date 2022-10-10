@@ -23,8 +23,6 @@ def draw_image(image, out, left, top, mode):
     pass
 
 
-
-
 def make_channels(filename):
     """
     Given an image filename.
@@ -35,8 +33,19 @@ def make_channels(filename):
     image = SimpleImage(filename)
     # Specifying 'black' as the color for the blank image.
     out = SimpleImage.blank(image.width * 3, image.height, back_color='black')
-
-    # -your code here-
+    
+    width = image.width
+    height = image.height
+    for y in range(height):
+        for x in range(width):
+            pixel = image.get_pixel(x, y)
+            #Red Channel
+            red_channel = out.get_pixel(x, y)
+            red_channel.red = pixel.red
+            red_channel.green = pixel.green * 0 
+            red_channel.blue = pixel.blue * 0
+            
+            
     pass
 
     # Draw out image on screen
