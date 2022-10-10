@@ -20,13 +20,30 @@ def draw_image(image, out, left, top, mode):
     controlling which colors of each pixel are copied.
     (See handout for details)
     """
-    image = SimpleImage(filename)
-    # Specifying 'black' as the color for the blank image.
-    out = SimpleImage.blank(image.width * 3, image.height, back_color='black')
+    width = image.width
+    height = image.height
     
-    
-    
-    pass
+    for y in range(width):
+        for x in range(height):
+            pixel = image.get_pixel(x, y)
+            position = out.get_pixel(left + x, top + y)
+            if mode == 'red':
+                position = pixel.red
+                position = pixel.green * 0 
+                position = pixel.blue * 0
+            if mode == 'green':
+                position.red = pixel.red * 0
+                position.green = pixel.green
+                position.blue = pixel.blue * 0
+            if mode == 'blue':
+                position.red = pixel.red * 0
+                position.green = pixel.green * 0
+                position.blue = pixel.blue
+            if mode == 'all':
+                position.red = pixel.red
+                position.green = pixel.green
+                position.blue = pixel.blue
+                
 
 
 def make_channels(filename):
