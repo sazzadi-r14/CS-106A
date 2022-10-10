@@ -44,6 +44,16 @@ def make_channels(filename):
             red_channel.red = pixel.red
             red_channel.green = pixel.green * 0 
             red_channel.blue = pixel.blue * 0
+            #Green Channel
+            green_channel = out.get_pixel(x + width, y)
+            green_channel.red = pixel.red * 0
+            green_channel.green = pixel.green
+            green_channel.blue = pixel.blue * 0
+            #Blue Channel
+            blue_channel = out.get_pixel(x + (width * 2), y)
+            blue_channel.red = pixel.red * 0
+            blue_channel.green = pixel.green * 0
+            blue_channel.blue = pixel.blue
             
             
     pass
