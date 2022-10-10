@@ -1,0 +1,15 @@
+For some assignments, we will have a short ethics exercise. Here is
+the exercise that goes with the bluescreen project.
+
+First, please watch the 7 minute video on Canvas from the ethics
+staff.
+
+With the bluescreen code, you've seen how to manipulate images.
+You can imagine using these techniques to create images to
+entertain or illustrate. And you can also imagine using these
+techniques to mislead.
+
+Write a paragraph below describing two hypothetical scenarios where
+you use image manipulation - one benign and one harmful.
+Explain why one is ethical and one is not.
+Include this text file with your homework submission.
