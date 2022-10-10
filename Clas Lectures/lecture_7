@@ -1,4 +1,4 @@
-https://web.stanford.edu/class/cs106a/handouts_w2021/lecture-7.html
+# https://web.stanford.edu/class/cs106a/handouts_w2021/lecture-7.html 
 
 
 # Fucntion
@@ -9,3 +9,12 @@ Black box function model.
 Return always ends the fucntions, 
 and returns a value from that function. 
 """
+
+#String
+'''
+len('') - this is a valid string and it is called the empty string. 
+then len of it is 0
+len basically gives how many chars(kars) are in the string. 
+
+It is a convention to use single quote for the string. 
+'''
