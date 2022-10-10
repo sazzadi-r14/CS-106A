@@ -16,5 +16,25 @@ len('') - this is a valid string and it is called the empty string.
 then len of it is 0
 len basically gives how many chars(kars) are in the string. 
 
-It is a convention to use single quote for the string. 
+It is a convention to use ('') single quote for the string. 
+
+How to get a indivudula char from the string?
+
+You have to write the index number of the specific charracter in square brackets
+
+function[i]
+
+a = 'hi'
+b = 'there'
+
+a + b = hithere
+the plus adds to strings together, it is called an concatenatinon
+
+s = 'hello'
+s = s + '!'
+print(s) -- hello!
+
+s += '!'
+print(s) -- hello!
+
 '''

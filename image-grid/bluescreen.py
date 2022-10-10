@@ -40,7 +40,7 @@ def do_front(front_filename, back_filename):
 
             # Your code - replace False with expression
             # detect pixels in front that should be replaced with back pixels
-            if pixel.green > 235 and average > 100 :
+            if (pixel.green > 150 and average < 130) or (pixel.green > 55 and average < 70) or (pixel.green > 130 and average < 100):
                 back_pixel = back.get_pixel(x, y)
                 pixel.red = back_pixel.red
                 pixel.green = back_pixel.green
