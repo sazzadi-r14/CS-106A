@@ -20,6 +20,12 @@ def draw_image(image, out, left, top, mode):
     controlling which colors of each pixel are copied.
     (See handout for details)
     """
+    image = SimpleImage(filename)
+    # Specifying 'black' as the color for the blank image.
+    out = SimpleImage.blank(image.width * 3, image.height, back_color='black')
+    
+    
+    
     pass
 
 
