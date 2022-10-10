@@ -14,36 +14,29 @@ from simpleimage import SimpleImage
 
 def draw_image(image, out, left, top, mode):
     """
-    Draw a copy of "image" into "out", with image's origin
-    at (left, top) within the out image.
-    Mode is one of 'red' 'green' 'blue' 'all',
-    controlling which colors of each pixel are copied.
-    (See handout for details)
+    #Draw a copy of "image" into "out", with image's origin
+    #at (left, top) within the out image.
+    #Mode is one of 'red' 'green' 'blue' 'all',
+    #ontrolling which colors of each pixel are copied.
+    #(See handout for details)
     """
     width = image.width
     height = image.height
     
-    for y in range(width):
-        for x in range(height):
+    for y in range(height):
+        for x in range(width):
             pixel = image.get_pixel(x, y)
             position = out.get_pixel(left + x, top + y)
             if mode == 'red':
-                position = pixel.red
-                position = pixel.green * 0 
-                position = pixel.blue * 0
+                position.red = pixel.red
             if mode == 'green':
-                position.red = pixel.red * 0
                 position.green = pixel.green
-                position.blue = pixel.blue * 0
             if mode == 'blue':
-                position.red = pixel.red * 0
-                position.green = pixel.green * 0
                 position.blue = pixel.blue
             if mode == 'all':
                 position.red = pixel.red
                 position.green = pixel.green
                 position.blue = pixel.blue
-                
 
 
 def make_channels(filename):
@@ -59,6 +52,7 @@ def make_channels(filename):
     
     width = image.width
     height = image.height
+    
     for y in range(height):
         for x in range(width):
             pixel = image.get_pixel(x, y)
@@ -94,7 +88,6 @@ def make_test(filename):
     out = SimpleImage.blank(image.width + side_margin * 2, image.height + top_margin * 2, back_color='blue')
     draw_image(image, out, side_margin, top_margin, 'all')
     out.show()
-
 
 def make_grid(filename, n, plain):
     """

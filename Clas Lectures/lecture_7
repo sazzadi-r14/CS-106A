@@ -1,0 +1,11 @@
+https://web.stanford.edu/class/cs106a/handouts_w2021/lecture-7.html
+
+
+# Fucntion
+"""
+Work on one fucntion at a time. 
+Black box function model.
+
+Return always ends the fucntions, 
+and returns a value from that function. 
+"""
