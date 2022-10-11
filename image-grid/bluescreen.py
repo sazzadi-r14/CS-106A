@@ -40,11 +40,11 @@ def do_front(front_filename, back_filename):
 
             # Your code - replace False with expression
             # detect pixels in front that should be replaced with back pixels
-            if (pixel.green > 150 and average < 130) or (pixel.green > 55 and average < 70) or (pixel.green > 130 and average < 100):
+            if pixel.green > average * 1.15:    
                 back_pixel = back.get_pixel(x, y)
-                pixel.red = back_pixel.red
-                pixel.green = back_pixel.green
-                pixel.blue = back_pixel.blue
+                pixel.red = back_pixel.red * 0.8
+                pixel.green = back_pixel.green * 0.8
+                pixel.blue = back_pixel.blue * 0.8
     return image
 
 
@@ -67,15 +67,15 @@ def do_back(front_filename, shift_x, shift_y, back_filename):
 
             # Your code - replace False with expression
             # detect pixels in front that should be copied to back
-            if False:
+            if pixel.green < average * 1.1:
                 dest_x = x + shift_x
                 dest_y = y + shift_y
                 # Only copy pixels to back if they will be in-bounds
                 if back.in_bounds(dest_x, dest_y):
                     back_pixel = back.get_pixel(dest_x, dest_y)
-                    back_pixel.red = pixel.red
-                    back_pixel.green = pixel.green
-                    back_pixel.blue = pixel.blue
+                    back_pixel.red = pixel.red * 0.8
+                    back_pixel.green = pixel.green * 0.8
+                    back_pixel.blue = pixel.blue * 0.8
     return back
 
 
