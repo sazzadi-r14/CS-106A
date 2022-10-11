@@ -13,3 +13,11 @@ Write a paragraph below describing two hypothetical scenarios where
 you use image manipulation - one benign and one harmful.
 Explain why one is ethical and one is not.
 Include this text file with your homework submission.
+
+Scenario 1- For a research purpose where we are creating different 
+kind of image mainpulation to check how human brain reacts to 
+different kind of stimulus. How people periceive different picture
+in their head and what kind of signals they give off. 
+
+Scenario 2- Using it to decieve someone into something that's not true,
+bending the reality, or manipulating someone to spread a propoganda. 
