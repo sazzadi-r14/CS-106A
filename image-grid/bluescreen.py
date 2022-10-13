@@ -1,5 +1,19 @@
 #!/usr/bin/env python3
 
+#Story Behind This picture
+""""
+My picture might not be the most artisitic one. But, this is as close to my heart as it could 
+be. I always love astronomy, and it was kind of hoplessly romantic to me. So, I always kept the
+stargazing thingy deeply personal to me. Because I wanted to stargaze only with the person I'm sure about. 
+When I found my fiancee Orion was the first constellation that we looked at. Which is the background of the image. 
+I always loved Astronautics. That's why she gav eme a tiny astronaut around the beginning of our relationship. 
+WHich is the foreground. The background of Orion Constellation that you see, was hand drawn by her. I'm 13 thousand
+kilometers away from her now. But, I always keep these with me. So, I though what can be a better use of these stuffs 
+than this homework? Nevermind, the best of these are in the heart. Thank you so much for going through this. 
+
+"""
+
+
 """
 Stanford Bluescreen Example
 Shows front and back strategies
