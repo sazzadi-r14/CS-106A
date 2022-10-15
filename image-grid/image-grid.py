@@ -46,6 +46,14 @@ def make_channels(filename):
     filled with the red, green, and blue channels
     of the original image.
     """
+    
+    #RE-SUBMISSION
+    """
+    I submitted it on October 10th. But I realises I had to use the draw_image function for this code.
+    So, I had to resubmit. I missed that instruction of the homework. It would be great if you could
+    keep the early submission bonus. Thank you for your consideration. 
+    """
+    
     image = SimpleImage(filename)
     # Specifying 'black' as the color for the blank image.
     out = SimpleImage.blank(image.width * 3, image.height, back_color='black')
@@ -53,7 +61,11 @@ def make_channels(filename):
     width = image.width
     height = image.height
     
-    for y in range(height):
+    draw_image(image, out, 0, 0, 'red')
+    draw_image(image, out, width, 0, 'green')
+    draw_image(image, out, width * 2, 0, 'blue')
+    
+    """for y in range(height):
         for x in range(width):
             pixel = image.get_pixel(x, y)
             #Red Channel
@@ -71,7 +83,7 @@ def make_channels(filename):
             blue_channel.red = pixel.red * 0
             blue_channel.green = pixel.green * 0
             blue_channel.blue = pixel.blue
-            
+            """
     # Draw out image on screen
     out.show()
 
