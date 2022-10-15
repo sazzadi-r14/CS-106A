@@ -53,7 +53,11 @@ def make_channels(filename):
     width = image.width
     height = image.height
     
-    for y in range(height):
+    draw_image(image, out, 0, 0, 'red')
+    draw_image(image, out, width, 0, 'green')
+    draw_image(image, out, width * 2, 0, 'blue')
+    
+    """for y in range(height):
         for x in range(width):
             pixel = image.get_pixel(x, y)
             #Red Channel
@@ -71,7 +75,7 @@ def make_channels(filename):
             blue_channel.red = pixel.red * 0
             blue_channel.green = pixel.green * 0
             blue_channel.blue = pixel.blue
-            
+            """
     # Draw out image on screen
     out.show()
 
