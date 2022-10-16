@@ -13,7 +13,7 @@ from grid import Grid
 
 SIDE = 15  # pixels across of one square
 WATER_FACTOR = 20  # 1 out of this factor is water in top edge
-ROCK_FACTOR = 10   # 1 out of this factor is rock at the start
+ROCK_FACTOR = 10  # 1 out of this factor is rock at the start
 
 
 def is_move_ok(grid, x_to, y_to):
@@ -33,7 +33,10 @@ def is_move_ok(grid, x_to, y_to):
     >>> is_move_ok(grid, 2, 2)   # out-of-bounds down
     False
     """
-    pass
+    if grid.in_bounds(x_to, y_to) is True and grid.get(x_to, y_to) is None:  # Checks if x_to and y_to in bounds,
+        # and gets their value
+        return True
+    return False  # Returns False for the entire function if the statement is not true.
 
 
 def move_water(grid, x, y):
@@ -56,7 +59,21 @@ def move_water(grid, x, y):
     >>> move_water(grid, 2, 1)  # nowhere to go - disappears
     [['w', 'w', 'w'], ['r', None, None]]
     """
-    pass
+    if is_move_ok(grid, x, y + 1):  # Checks for the bottom square of the grid.
+        grid.set(x, y, None)
+        grid.set(x, y + 1, 'w')
+        return grid
+    if is_move_ok(grid, x - 1, y + 1):  # Checks for the bottom left square of the grid.
+        grid.set(x, y, None)
+        grid.set(x - 1, y + 1, 'w')
+        return grid
+    if is_move_ok(grid, x + 1, y + 1):  # Checks for the bottom right square of the grid.
+        grid.set(x, y, None)
+        grid.set(x + 1, y + 1, 'w')
+        return grid
+    else:  # If at this point all the above statement is False, then it will just erase the 'w' from world
+        grid.set(x, y, None)
+        return grid
 
 
 def move_all_water(grid):
