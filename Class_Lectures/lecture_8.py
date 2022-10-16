@@ -52,3 +52,5 @@ for i in range(len(s)):
     if s[i].isdigit():
         result += s[i]
 return result
+
+Just a push so that I can push it from pycharm
