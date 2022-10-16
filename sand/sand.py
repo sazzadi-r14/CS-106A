@@ -52,14 +52,27 @@ def is_move_ok(grid, x_from, y_from, x_to, y_to):
     False
     >>> is_move_ok(grid, 0, 0, -1, 1)  # down-left OOB
     False
-    >>> # pass - implement 2 more OOB tests here
+    >>> is_move_ok(grid, 0, 0, 1, 0)  # right OOB
+    False
+    >>> is_move_ok(grid, 0, 0, 1, 1)  # down-right OOB
     >>> # 3 by 2 grid, try various moves from 1,0
     >>> grid = Grid.build([[None, 's',   'r'], [None, None, None]])
     >>> is_move_ok(grid, 1, 0, 0, 0)  # left ok
     True
-    >>> # pass - implement 4 more tests here
+    >>> is_move_ok(grid, 1, 0, 2, 0)  # Rock
+    False
+    >>> is_move_ok(grid, 1, 0, 2, 1)  # Corner Rule - Incorrect
+    False
+    >>> is_move_ok(grid, 1, 0, 0, 1)  # Corner Rule - Correct
+    True
+    >>> is_move_ok(grid, 1, 0, 1, 1)  # Down
+    True
     """
-    pass
+
+
+
+
+
 
 
 def do_gravity(grid, x, y):
