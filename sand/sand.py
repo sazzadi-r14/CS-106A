@@ -73,7 +73,7 @@ def is_move_ok(grid, x_from, y_from, x_to, y_to):
         return False
     if grid.get(x_to, y_to) == 'r':  # For Rock
         return False
-    if grid.get(x_to, y_to) == 's':
+    if grid.get(x_to, y_to) == 's': # I 
         return False
     if grid.get(x_to, y_to) == None and grid.get(x_to, y_to - 1) == None:  # For corner
         return True
@@ -142,7 +142,7 @@ def do_gravity(grid, x, y):
 
     if grid.get(x, y) == 's':
         if is_move_ok(grid, x, y, x, y + 1):  # For down
-            #print(grid.get(x, y + 1)) #I wrote these lines to debug the codes
+            #print(grid.get(x, y + 1)) i wrote these lines to debug the codes
             grid.set(x, y + 1, 's')
             grid.set(x, y, None)
             return grid
