@@ -187,6 +187,7 @@ def do_whole_grid(grid, brownian):
     Given grid and brownian int, do one round
     of gravity and brownian over the whole grid.
     (tests and code TBD)
+    
     """
     pass
     return grid
