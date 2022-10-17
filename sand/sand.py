@@ -9,9 +9,15 @@ import tkinter
 import random
 import datetime
 
+# I just imported these to accelerate the game with CUDA
+# But as its Nvidia based, it requires an Nvidia gpu
+from numba import jit, cuda
+import numpy as np
+
 from grid import Grid
 
 
+# @jit(target_backend='cuda')
 def do_move(grid, x_from, y_from, x_to, y_to):
     """
     Given grid and x_from,y_from with a sand,
@@ -36,6 +42,7 @@ def do_move(grid, x_from, y_from, x_to, y_to):
     return grid
 
 
+# @jit(target_backend='cuda')
 def is_move_ok(grid, x_from, y_from, x_to, y_to):
     """
     Given grid and x_from,y_from and destination x_to,y_to
@@ -75,7 +82,8 @@ def is_move_ok(grid, x_from, y_from, x_to, y_to):
         return False
     if grid.get(x_to, y_to) == 's':  # this is for checking sand
         return False
-    if (x_from - 1 == x_to or x_from + 1 == x_to) and y_from == y_to and grid.get(x_to, y_to) == None: # To test left and right for brownian.
+    if (x_from - 1 == x_to or x_from + 1 == x_to) and y_from == y_to and grid.get(x_to, y_to) == None:  # To test left
+        # and right for brownian.
         return True
     if grid.get(x_to, y_to) == None and grid.get(x_to, y_to - 1) == None:  # For corner
         return True
@@ -85,6 +93,7 @@ def is_move_ok(grid, x_from, y_from, x_to, y_to):
         return False
 
 
+# @jit(target_backend='cuda')
 def do_gravity(grid, x, y):
     """
     Given grid and a in-bounds x,y. If there is a sand at that x,y.
@@ -144,7 +153,7 @@ def do_gravity(grid, x, y):
 
     if grid.get(x, y) == 's':
         if is_move_ok(grid, x, y, x, y + 1):  # For down
-            # print(grid.get(x, y + 1)) i wrote these lines to debug the codes
+            # print(grid.get(x, y + 1)) I wrote these print commands to debug the codes
             grid.set(x, y + 1, 's')
             grid.set(x, y, None)
             return grid
@@ -162,6 +171,7 @@ def do_gravity(grid, x, y):
     return grid
 
 
+# @jit(target_backend='cuda')
 def do_brownian(grid, x, y, brownian):
     """
     Given grid, x,y, and brownian int 0..100.
@@ -194,6 +204,7 @@ def do_brownian(grid, x, y, brownian):
     return grid
 
 
+# @jit(target_backend='cuda')
 def do_whole_grid(grid, brownian):
     """
     Given grid and brownian int, do one round
@@ -225,6 +236,7 @@ handle the controls, and draw the grid to the screen.
 """
 
 
+# @jit(target_backend='cuda')
 def draw_grid_canvas(grid, canvas, scale):
     """
     Draw grid to tk canvas, erasing and then filling it.
@@ -259,6 +271,7 @@ fps_count = 0
 fps_start = 0
 
 
+# @jit(target_backend='cuda')
 def fps_update():
     "Update the little fps text at the upper right"
     global fps_enable, fps_count, fps_start, fps_label
@@ -287,6 +300,7 @@ SHIFT = 6
 
 
 # provided function to build the GUI
+# @jit(target_backend='cuda')
 def make_gui(top, width, height):
     """
     Set up the GUI elements for the Sand window, returning the Canvas to use.
@@ -344,6 +358,7 @@ def make_gui(top, width, height):
     return canvas
 
 
+# @jit(target_backend='cuda')
 def big_erase(grid, x, y, canvas):
     """Erase big red circle in the given grid centered on x,y"""
     rad = 4
