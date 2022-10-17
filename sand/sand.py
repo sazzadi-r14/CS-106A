@@ -73,8 +73,10 @@ def is_move_ok(grid, x_from, y_from, x_to, y_to):
         return False
     if grid.get(x_to, y_to) == 'r':  # For Rock
         return False
-    if grid.get(x_to, y_to) == 's': # I 
+    if grid.get(x_to, y_to) == 's':  # this is for checking sand
         return False
+    if (x_from - 1 == x_to or x_from + 1 == x_to) and y_from == y_to and grid.get(x_to, y_to) == None: # To test left and right for brownian.
+        return True
     if grid.get(x_to, y_to) == None and grid.get(x_to, y_to - 1) == None:  # For corner
         return True
     if (x_from == x_to) and (y_from + 1 == y_to):  # For checking down
@@ -142,17 +144,17 @@ def do_gravity(grid, x, y):
 
     if grid.get(x, y) == 's':
         if is_move_ok(grid, x, y, x, y + 1):  # For down
-            #print(grid.get(x, y + 1)) i wrote these lines to debug the codes
+            # print(grid.get(x, y + 1)) i wrote these lines to debug the codes
             grid.set(x, y + 1, 's')
             grid.set(x, y, None)
             return grid
         if is_move_ok(grid, x, y, x - 1, y + 1):  # For Corner left
-            #print(grid.get(x -1, y + 1))
+            # print(grid.get(x -1, y + 1))
             grid.set(x - 1, y + 1, 's')
             grid.set(x, y, None)
             return grid
         if is_move_ok(grid, x, y, x + 1, y + 1):  # For Corner Right
-            #print(grid.get(x + 1, y + 1))
+            # print(grid.get(x + 1, y + 1))
             grid.set(x + 1, y + 1, 's')
             grid.set(x, y, None)
             return grid
@@ -178,7 +180,17 @@ def do_brownian(grid, x, y, brownian):
     >>> do_brownian(grid, 1, 1, 100)
     [[None, 's', None], ['s', 's', None]]
     """
-    pass
+    if grid.get(x, y) == 's':
+        num = random.randrange(100)
+        if num < brownian:
+            decision = random.randrange(2)
+            if decision == 0 and is_move_ok(grid, x, y, x - 1, y):  # Left
+                grid.set(x - 1, y, 's')
+                grid.set(x, y, None)
+            if decision == 1 and is_move_ok(grid, x, y, x + 1, y):  # Right
+                grid.set(x + 1, y, 's')
+                grid.set(x, y, None)
+
     return grid
 
 
@@ -200,6 +212,7 @@ def do_whole_grid(grid, brownian):
     for y in reversed(range(grid.height)):
         for x in range(grid.width):
             do_gravity(grid, x, y)
+            do_brownian(grid, x, y, brownian)
 
     return grid
 
