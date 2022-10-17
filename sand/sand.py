@@ -187,9 +187,20 @@ def do_whole_grid(grid, brownian):
     Given grid and brownian int, do one round
     of gravity and brownian over the whole grid.
     (tests and code TBD)
-    
+
+
+    >>> # not sand
+    >>> grid = Grid.build([[None, 's', None], [None, 's', None], [None, None, None]])
+    >>> do_whole_grid(grid, 0)
+    [[None, None, None], [None, 's', None], [None, 's', None]]
+    >>> grid = Grid.build([[None, 's', None], [None, 's', None], [None, 's', None]])
+    >>> do_whole_grid(grid, 0)
+    [[None, None, None], [None, 's', None], ['s', 's', None]]
     """
-    pass
+    for y in reversed(range(grid.height)):
+        for x in range(grid.width):
+            do_gravity(grid, x, y)
+
     return grid
 
 
