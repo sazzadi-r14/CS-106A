@@ -55,6 +55,7 @@ def is_move_ok(grid, x_from, y_from, x_to, y_to):
     >>> is_move_ok(grid, 0, 0, 1, 0)  # right OOB
     False
     >>> is_move_ok(grid, 0, 0, 1, 1)  # down-right OOB
+    False
     >>> # 3 by 2 grid, try various moves from 1,0
     >>> grid = Grid.build([[None, 's',   'r'], [None, None, None]])
     >>> is_move_ok(grid, 1, 0, 0, 0)  # left ok
@@ -68,11 +69,14 @@ def is_move_ok(grid, x_from, y_from, x_to, y_to):
     >>> is_move_ok(grid, 1, 0, 1, 1)  # Down
     True
     """
-
-
-
-
-
+    if not grid.in_bounds(x_to, y_to):
+        return False
+    if grid.get(x_to, y_to) == None and grid.get(x_to, y_to - 1) == None:
+        return True
+    if (x_from == x_to) and (y_from + 1 == y_to):
+        return True
+    else:
+        return False
 
 
 def do_gravity(grid, x, y):
