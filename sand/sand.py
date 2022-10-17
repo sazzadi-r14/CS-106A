@@ -69,11 +69,15 @@ def is_move_ok(grid, x_from, y_from, x_to, y_to):
     >>> is_move_ok(grid, 1, 0, 1, 1)  # Down
     True
     """
-    if not grid.in_bounds(x_to, y_to):
+    if not grid.in_bounds(x_to, y_to):  # For checking in bounds
         return False
-    if grid.get(x_to, y_to) == None and grid.get(x_to, y_to - 1) == None:
+    if grid.get(x_to, y_to) == 'r':  # For Rock
+        return False
+    if grid.get(x_to, y_to) == 's':
+        return False
+    if grid.get(x_to, y_to) == None and grid.get(x_to, y_to - 1) == None:  # For corner
         return True
-    if (x_from == x_to) and (y_from + 1 == y_to):
+    if (x_from == x_to) and (y_from + 1 == y_to):  # For checking down
         return True
     else:
         return False
@@ -135,7 +139,24 @@ def do_gravity(grid, x, y):
     >>> do_gravity(grid, 4, 0)
     [['s', 's', None, 's', None], ['s', 's', None, 's', 's']]
     """
-    pass
+
+    if grid.get(x, y) == 's':
+        if is_move_ok(grid, x, y, x, y + 1):  # For down
+            #print(grid.get(x, y + 1)) #I wrote these lines to debug the codes
+            grid.set(x, y + 1, 's')
+            grid.set(x, y, None)
+            return grid
+        if is_move_ok(grid, x, y, x - 1, y + 1):  # For Corner left
+            #print(grid.get(x -1, y + 1))
+            grid.set(x - 1, y + 1, 's')
+            grid.set(x, y, None)
+            return grid
+        if is_move_ok(grid, x, y, x + 1, y + 1):  # For Corner Right
+            #print(grid.get(x + 1, y + 1))
+            grid.set(x + 1, y + 1, 's')
+            grid.set(x, y, None)
+            return grid
+
     return grid
 
 
@@ -204,7 +225,7 @@ def draw_grid_canvas(grid, canvas, scale):
                 ry = 1 + y * scale
                 canvas.create_rectangle(rx, ry, rx + scale, ry + scale, fill=color, outline='black')
 
-    canvas.create_rectangle(0, 0, cwidth-1, cheight-1, outline='blue')
+    canvas.create_rectangle(0, 0, cwidth - 1, cheight - 1, outline='blue')
     canvas.update()
 
 
@@ -317,7 +338,7 @@ def big_erase(grid, x, y, canvas):
     for ey in range(y1, y2 + 1):
         for ex in range(x1, x2 + 1):
             # circle around x,y
-            if grid.in_bounds(ex, ey) and abs(x-ex)**2 + abs(y-ey)**2 <= rad ** 2:
+            if grid.in_bounds(ex, ey) and abs(x - ex) ** 2 + abs(y - ey) ** 2 <= rad ** 2:
                 grid.set(ex, ey, None)
 
 
