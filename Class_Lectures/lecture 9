@@ -1,0 +1,89 @@
+
+from colorsys import yiq_to_rgb
+from platform import python_branch
+from re import S
+
+
+the 'in' in python
+
+it checks if there is specific string in python 
+
+"not in" just the opposit of in
+
+Some more built in fucntions
+
+1. Good names for this example, short but with key facts: low, low_char
+
+2. Names with more detail, probably too long: low_char_i, low_char_in_s
+
+3. Avoid this name: lower - name is ok, but avoid using a name which is the same as the name of a function, just to avoid confusion.
+
+# instead of this
+if low == 'c' or low == 'a' or low == 't':
+    ...
+
+# this works - a trick use of "in"
+if low in 'cat':
+    ...
+    
+    
+if test1:
+      action1
+elif test2:
+  action2
+elif test3:
+  action3
+else:
+  action4
+
+# Tries test1, if that's False, tries test2,
+# if that's False, tries test3, and so on.
+
+>>> s = 'Python'
+>>> 
+>>> s.find('th')
+2
+>>> s.find('o')
+4
+>>> s.find('y')
+1
+>>> s.find('x')
+-1
+>>> s.find('N')
+-1
+>>> s.find('P')
+0
+
+s.find is used to find the specific index of a char in a string
+
+
+# SLICE
+
+s = 'Python'
+s[a:b]
+starts from a, and ends at UBNI b
+
+>>> s = 'Python'
+>>> s[1:3]    # 1 .. UBNI
+'yt'
+>>> s[1:5]
+'ytho'
+>>> s[4:5]
+'o'
+>>> s[4:4]    # "not including" dominates
+''
+>>> s[:3]     # omit = from/to end
+'Pyt'
+>>> s[4:]
+'on'
+>>> s[4:999]  # too big = through the end
+'on'
+>>> s[:4]     # "perfect split" on 4
+'Pyth'
+>>> s[4:]
+'on'
+>>> s[:]      # the whole thing
+'Python'
+
+Example: brackets()
+
