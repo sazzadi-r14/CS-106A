@@ -151,7 +151,7 @@ def do_gravity(grid, x, y):
     [['s', 's', None, 's', None], ['s', 's', None, 's', 's']]
     """
 # I again forgot to add the helper function and wrote full fetched code. I submitted it on monday, but i had to resubmit
-    it. Thanks to my roommate again.
+    #it. Thanks to my roommate again.
     if grid.get(x, y) == 's':
         if is_move_ok(grid, x, y, x, y + 1):  # For down
             # print(grid.get(x, y + 1)) I wrote these print commands to debug the codes
