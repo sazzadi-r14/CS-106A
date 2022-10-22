@@ -11,8 +11,8 @@ import datetime
 
 # I just imported these to accelerate the game with CUDA
 # But as its Nvidia based, it requires an Nvidia gpu
-from numba import jit, cuda
-import numpy as np
+#from numba import jit, cuda
+#import numpy as np
 
 from grid import Grid
 
@@ -154,18 +154,21 @@ def do_gravity(grid, x, y):
     if grid.get(x, y) == 's':
         if is_move_ok(grid, x, y, x, y + 1):  # For down
             # print(grid.get(x, y + 1)) I wrote these print commands to debug the codes
-            grid.set(x, y + 1, 's')
-            grid.set(x, y, None)
+            do_move(grid, x, y, x, y + 1)
+            #grid.set(x, y + 1, 's')
+            #grid.set(x, y, None)
             return grid
         if is_move_ok(grid, x, y, x - 1, y + 1):  # For Corner left
             # print(grid.get(x -1, y + 1))
-            grid.set(x - 1, y + 1, 's')
-            grid.set(x, y, None)
+            do_move(grid, x, y, x - 1, y + 1)
+            #grid.set(x - 1, y + 1, 's')
+            #grid.set(x, y, None)
             return grid
         if is_move_ok(grid, x, y, x + 1, y + 1):  # For Corner Right
             # print(grid.get(x + 1, y + 1))
-            grid.set(x + 1, y + 1, 's')
-            grid.set(x, y, None)
+            do_move(grid, x, y, x + 1, y + 1)
+            #grid.set(x + 1, y + 1, 's')
+            #grid.set(x, y, None)
             return grid
 
     return grid
