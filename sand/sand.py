@@ -10,7 +10,7 @@ import random
 import datetime
 
 # I just imported these to accelerate the game with CUDA
-# But as its Nvidia based, it requires an Nvidia gpu
+# But as its Nvidia based, it requires an Nvidia GPU
 from numba import jit, cuda
 import numpy as np
 
