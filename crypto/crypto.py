@@ -9,7 +9,8 @@ import sys
 # provided ALPHABET constant - list of the regular alphabet
 # in lowercase. Refer to this simply as ALPHABET in your code.
 # This list should not be modified.
-ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z']
 
 
 def compute_slug(key):
@@ -24,7 +25,16 @@ def compute_slug(key):
     >>> compute_slug('Zounds!')
     ['z', 'o', 'u', 'n', 'd', 's', 'a', 'b', 'c', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'p', 'q', 'r', 't', 'v', 'w', 'x', 'y']
     """
-    pass
+    slug = []
+    conv_key = key.lower()
+    for i in range(len(key)):
+        if conv_key[i].isalpha() and conv_key[i] not in slug:
+            slug.append(conv_key[i])
+    for j in range(len(ALPHABET)):
+        if ALPHABET[j] not in slug:
+            slug.append(ALPHABET[j])
+
+    return slug
 
 
 def encrypt_char(source, slug, ch):
@@ -46,7 +56,14 @@ def encrypt_char(source, slug, ch):
     >>> encrypt_char(ALPHABET, z_slug, ' ')
     ' '
     """
-    pass
+    if ch.isalpha():
+        if ch.lower() in source:
+            i = source.index(ch.lower())
+            if ch.isupper():
+                return slug[i].upper()
+            else:
+                return slug[i]
+    return ch
 
 
 def encrypt_str(source, slug, s):
@@ -58,7 +75,11 @@ def encrypt_str(source, slug, s):
     >>> encrypt_str(ALPHABET, z_slug, 'And like a thunderbolt he falls.')
     'Zmc khjd z sgtmcdqanks gd ezkkr.'
     """
-    pass
+    encrypted_str = ''
+    for i in range(len(s)):
+        encrypted_str += encrypt_char(source, slug, s[i])
+
+    return encrypted_str
 
 
 def decrypt_str(source, slug, s):
@@ -69,7 +90,9 @@ def decrypt_str(source, slug, s):
     >>> decrypt_str(ALPHABET, z_slug, 'Zmc khjd z sgtmcdqanks gd ezkkr.')
     'And like a thunderbolt he falls.'
     """
-    pass
+    decrypted = encrypt_str(slug, source, s)
+
+    return decrypted
 
 
 def encrypt_file(filename, key):
@@ -77,7 +100,10 @@ def encrypt_file(filename, key):
     Given filename and key, compute and
     print the encrypted form of its lines.
     """
-    pass
+    with open(filename) as f:
+        for line in f:
+            line = line.strip()
+            print(line)
 
 
 def decrypt_file(filename, key):
