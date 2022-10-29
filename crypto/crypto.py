@@ -28,10 +28,10 @@ def compute_slug(key):
     slug = []
     conv_key = key.lower()
     for i in range(len(key)):
-        if conv_key[i].isalpha() and conv_key[i] not in slug:
+        if conv_key[i].isalpha() and conv_key[i] not in slug: #To add the key
             slug.append(conv_key[i])
-    for j in range(len(ALPHABET)):
-        if ALPHABET[j] not in slug:
+    for j in range(len(ALPHABET)): #To add the alphabet
+        if ALPHABET[j] not in slug: 
             slug.append(ALPHABET[j])
 
     return slug
@@ -60,9 +60,9 @@ def encrypt_char(source, slug, ch):
         if ch.lower() in source:
             i = source.index(ch.lower())
             if ch.isupper():
-                return slug[i].upper()
+                return slug[i].upper() #Returns upper case
             else:
-                return slug[i]
+                return slug[i] # Returns lower case
     return ch
 
 
@@ -90,7 +90,7 @@ def decrypt_str(source, slug, s):
     >>> decrypt_str(ALPHABET, z_slug, 'Zmc khjd z sgtmcdqanks gd ezkkr.')
     'And like a thunderbolt he falls.'
     """
-    decrypted = encrypt_str(slug, source, s)
+    decrypted = encrypt_str(slug, source, s) # Had fun using this argument
 
     return decrypted
 
@@ -100,10 +100,11 @@ def encrypt_file(filename, key):
     Given filename and key, compute and
     print the encrypted form of its lines.
     """
+    slug = compute_slug(key)
     with open(filename) as f:
         for line in f:
             line = line.strip()
-            print(line)
+            print(encrypt_str(ALPHABET, slug, line))
 
 
 def decrypt_file(filename, key):
@@ -111,7 +112,11 @@ def decrypt_file(filename, key):
     Given filename and key, compute and
     print the decrypted form of its lines.
     """
-    pass
+    slug = compute_slug(key)
+    with open(filename) as f:
+        for line in f:
+            line = line.strip()
+            print(decrypt_str(ALPHABET, slug, line))
 
 
 def main():
@@ -120,8 +125,16 @@ def main():
     # -encrypt key filename
     # -decrypt key filename
     # Call encrypt_file() or decrypt_file() based on the args.
-    pass
+    if len(args) == 3 and args[0] == '-encrypt':
+        encrypt_file(args[2], args[1])
+    
+    if len(args) == 3 and args[0] == '-decrypt':
+        decrypt_file(args[2], args[1])
 
+#That was the meanest thing you guys could do. You all really shouldn't have rickrolled us after
+#hours of insane hardowrk.
+
+#Cardinal-Red
 
 # Python boilerplate.
 if __name__ == '__main__':
