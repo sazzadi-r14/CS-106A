@@ -5,8 +5,12 @@ part of your assignment.
 
 Suppose Alice and Bob are US citizens and Alice sends an SMS message to Bob through Verizon.
 
-1. If the police obtain a warrant and make a request to Verizon, can Verizon provide them with a copy of the message - yes or no? - one word answer:
+1. If the police obtain a warrant and make a request to Verizon, can Verizon provide them with a copy of the message - yes or no? - one word answer: yes
 
 2. Suppose instead Alice sends a message to Bob using an end-to-end encrypted messaging, and the bytes of the message flow through Verizon. Does Verizon have a copy of the plaintext of the message to provide to the police? Explain briefly.
 
-Your answer:
+Your answer: Verizon does not have a copy of the text to give to the police. Because end to end encrypted
+text means, the data is encrypted from sender's device and is decrypted in the receivers device. But, any medium
+in the middle is not supposed to be able to get the actual content. Because, even if they have access to the bytes
+its encrypted, which can only be decrypted in the recievers device. So, verizon shouldn't be able to figure out 
+the content of the message even if that passes through their service. 
