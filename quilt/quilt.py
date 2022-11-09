@@ -29,7 +29,7 @@ def draw_eye(canvas, left, top, width, height, n):
     canvas.fill_oval(left, top, width, height, color='yellow')
     for i in range(n):
         x = (i / (n - 1)) * (width - 1)
-        canvas.draw_line(left + width / 2, top + height / 2, left + x, top + height - 1, color='black')
+        canvas.draw_line(left + (width / 2), top + (height / 2), left + x, top + height - 1, color='black')
     
 
 
@@ -59,9 +59,23 @@ def draw_quilt(width, height, n):
     """
     canvas = DrawCanvas(width, height, title="Quilt")
 
-    # Your code here
-    pass
-
+    sub_width = width // n
+    sub_height = height // n
+    
+    for row in range(n):
+        for col in range(n):
+            left = col * sub_width
+            top = row * sub_height
+            choice = (col + row) % 4
+            if choice == 0:
+                draw_bars(canvas, left, top, sub_width, sub_height, n)
+            elif choice == 1:
+                draw_eye(canvas, left, top, sub_width, sub_height, n)
+            elif choice == 2:
+                draw_power(canvas, left, top, sub_width, sub_height, n)
+            else:
+                draw_bowtie(canvas, left, top, sub_width, sub_height, n)        
+            
 
 # main() code is complete.
 # There are 5 command lines that work here,

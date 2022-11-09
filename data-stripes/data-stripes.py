@@ -19,8 +19,7 @@ def draw_stripes(width, height, fracs, title):
     """
     canvas = DrawCanvas(width, height, title='Data Stripes')
 
-    # Your code here
-    pass
+    smaller_rec = width // len(fracs)
 
 
 def read_fracs(filename):
