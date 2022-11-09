@@ -66,7 +66,7 @@ def draw_quilt(width, height, n):
         for col in range(n):
             left = col * sub_width
             top = row * sub_height
-            choice = (col + row) % 4
+            choice = (col + row) % 4 #Top shift between the choices. 
             if choice == 0:
                 draw_bars(canvas, left, top, sub_width, sub_height, n)
             elif choice == 1:

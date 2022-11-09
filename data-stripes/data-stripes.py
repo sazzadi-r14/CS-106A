@@ -18,8 +18,15 @@ def draw_stripes(width, height, fracs, title):
     Draw the fracs data and title on the canvas.
     """
     canvas = DrawCanvas(width, height, title='Data Stripes')
-
+    
+    total_fracs = len(fracs)
     smaller_rec = width // len(fracs)
+    
+    for i in range(total_fracs):
+        red = BASE + DELTA * fracs[i]
+        blue = BASE - DELTA * fracs[i]
+        canvas.fill_rect(smaller_rec * i, 0, smaller_rec, height, color=(red, BASE, blue))
+    canvas.draw_string(5, 5, title, color='white')
 
 
 def read_fracs(filename):
