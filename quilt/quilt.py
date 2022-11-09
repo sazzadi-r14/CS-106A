@@ -12,28 +12,44 @@ def draw_bars(canvas, left, top, width, height, n):
     """
     Draw bars in the given canvas at left, top, with width, height, n
     """
-    pass
-
+    canvas.draw_rect(left, top, width, height, color='lightblue')
+    for i in range(n):
+        x = (i / (n - 1)) * (width - 1)       
+        canvas.draw_line(left + x, top, left +  x, top + height - 1, color='black')
+    
+#draw_bars(canvas, 0, 0, width, height, n)
+#draw_bars(canvas, width, height, width, height, n)
+#draw_bars(canvas, 300, 200, 300, 200, 10)
 
 def draw_eye(canvas, left, top, width, height, n):
     """
     Draw eye in the given canvas at left, top with width, height, n
     """
-    pass
+    canvas.draw_rect(left, top, width, height, color='lightblue')
+    canvas.fill_oval(left, top, width, height, color='yellow')
+    for i in range(n):
+        x = (i / (n - 1)) * (width - 1)
+        canvas.draw_line(left + width / 2, top + height / 2, left + x, top + height - 1, color='black')
+    
 
 
 def draw_bowtie(canvas, left, top, width, height, n):
     """
     Draw bowtie in the given canvas at left, top, with width, height, n
     """
-    pass
+    canvas.draw_rect(left, top, width, height, color='lightblue')
+    for i in range(n):
+        y = (i / (n - 1)) * (height - 1)
+        canvas.draw_line(left, top + y, left + width - 1, top + height - y - 1, color='red')
 
 
 def draw_power(canvas, left, top, width, height, n):
     """
     Draw power patch at the given left, top, with width, height, n.
     """
-    pass
+    canvas.draw_rect(left, top, width, height, color='lightblue')
+    draw_eye(canvas, left + width / 2, top + height / 2, width / 2, height / 2, n)
+    draw_bowtie(canvas, left, top, width / 2, height / 2, n)
 
 
 def draw_quilt(width, height, n):
