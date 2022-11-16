@@ -15,17 +15,30 @@ def add_name(names, year, rank, name):
     (1 test provided, more tests TBD)
     >>> add_name({}, 2000, 10, 'Abe')
     {'Abe': {2000: 10}}
-    >>> add_name({'Abe': {2010: 10}}, 2000, 10, 'Abe')
-    {'Abe': {2000: 10}}
+    >>> add_name({'Abe': {2000: 10}}, 2010, 20, 'Abe')
+    {'Abe': {2000: 10, 2010: 20}}
     >>> add_name({'Abe': {2000: 10}}, 2000, 10, 'Abe')
     {'Abe': {2000: 10}}
+    >>> add_name({'Abe': {2000: 10}}, 2000, 178, 'Abe')
+    {'Abe': {2000: 10}}
+    >>> add_name({'Abe': {2000: 178}}, 2000, 10, 'Abe')
+    {'Abe': {2000: 10}}
     """
-    
-    
-    
-    
-    
-    pass
+
+    date = {}  # The empty string to store the year: rank dict
+    if name in names:  # If the name is already in the dictionary then assigns the dictionary under the name key to date
+        date = names[name]
+    if year in date:
+        if date[year] > rank:  # If there is same name, it chooses to stck with the higher rank.
+            date[year] = rank
+    if year not in date:  # If the year is not in the key, then adds the year and rank to the date dict
+        date[year] = rank
+        # print(date)
+        # print(name)
+        # print(names)
+    names[name] = date  # Assigns the final dictionary of date to the dictionary.
+
+    return names
 
 
 def add_file(names, filename):
@@ -40,7 +53,17 @@ def add_file(names, filename):
     >>> add_file({'Bob': {2000: 1}, 'Alice': {2000: 1}, 'Cindy': {2000: 2}}, 'small-2010.txt')
     {'Bob': {2000: 1, 2010: 2}, 'Alice': {2000: 1, 2010: 2}, 'Cindy': {2000: 2}, 'Yot': {2010: 1}, 'Zena': {2010: 1}}
     """
-    pass
+    with open(filename) as f:
+        for line in f:
+            line = line.strip()
+            lst_line = line.split(',')  # Splitting the string about the commas, and storing the list in a variable.
+            if len(lst_line) == 1:  # This if statement just takes the year out of the first step of the loop.
+                year = lst_line[0]
+            else:  # For all the other cases than the first one.
+                add_name(names, int(year), int(lst_line[0]), lst_line[1])  # Adding male names to the dict
+                add_name(names, int(year), int(lst_line[0]), lst_line[2])  # Adding female names to the dict
+    return names
+
 
 
 def read_files(filenames):
