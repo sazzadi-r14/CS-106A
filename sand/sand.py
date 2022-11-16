@@ -150,26 +150,26 @@ def do_gravity(grid, x, y):
     >>> do_gravity(grid, 4, 0)
     [['s', 's', None, 's', None], ['s', 's', None, 's', 's']]
     """
-# I again forgot to add the helper function and wrote full fetched code. I submitted it on monday, but i had to resubmit
-    #it. Thanks to my roommate again.
+    # I again forgot to add the helper function and wrote full fetched code. I submitted it on monday, but i had to resubmit
+    # it. Thanks to my roommate again.
     if grid.get(x, y) == 's':
         if is_move_ok(grid, x, y, x, y + 1):  # For down
             # print(grid.get(x, y + 1)) I wrote these print commands to debug the codes
             do_move(grid, x, y, x, y + 1)
-            #grid.set(x, y + 1, 's')
-            #grid.set(x, y, None)
+            # grid.set(x, y + 1, 's')
+            # grid.set(x, y, None)
             return grid
         if is_move_ok(grid, x, y, x - 1, y + 1):  # For Corner left
             # print(grid.get(x -1, y + 1))
             do_move(grid, x, y, x - 1, y + 1)
-            #grid.set(x - 1, y + 1, 's')
-            #grid.set(x, y, None)
+            # grid.set(x - 1, y + 1, 's')
+            # grid.set(x, y, None)
             return grid
         if is_move_ok(grid, x, y, x + 1, y + 1):  # For Corner Right
             # print(grid.get(x + 1, y + 1))
             do_move(grid, x, y, x + 1, y + 1)
-            #grid.set(x + 1, y + 1, 's')
-            #grid.set(x, y, None)
+            # grid.set(x + 1, y + 1, 's')
+            # grid.set(x, y, None)
             return grid
 
     return grid
