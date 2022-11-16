@@ -15,8 +15,16 @@ def add_name(names, year, rank, name):
     (1 test provided, more tests TBD)
     >>> add_name({}, 2000, 10, 'Abe')
     {'Abe': {2000: 10}}
-    >>> # pass - more tests TBD
+    >>> add_name({'Abe': {2010: 10}}, 2000, 10, 'Abe')
+    {'Abe': {2000: 10}}
+    >>> add_name({'Abe': {2000: 10}}, 2000, 10, 'Abe')
+    {'Abe': {2000: 10}}
     """
+    
+    
+    
+    
+    
     pass
 
 
