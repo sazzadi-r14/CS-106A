@@ -80,3 +80,13 @@ False
 'A'
 >>> '@'.upper()
 '@'
+
+#Lecture 16
+
+def while_double(s):
+    result = ''
+i = 0
+while i < len(s):
+    result += s[i] + s[i]
+    i += 1
+return result
