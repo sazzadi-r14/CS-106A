@@ -65,13 +65,16 @@ def add_file(names, filename):
     return names
 
 
-
 def read_files(filenames):
     """
     Given list of filenames, build and return a names dict
     of all their data.
     """
-    pass
+    names = {}
+    for i in range(len(filenames)):  # Iterate through the list of files and adds the data to the dictionary.
+        add_file(names, filenames[i])
+
+    return names
 
 
 def search_names(names, target):
@@ -81,8 +84,20 @@ def search_names(names, target):
     that contain that target string anywhere.
     Not case sensitive.
     (Code and tests TBD)
+    >>> search_names({'Yot': {2010: 1}, 'Zena': {2010: 1}, 'Bob': {2010: 2}, 'Alice': {2010: 2}}, 'o')
+    ['Bob', 'Yot']
+    >>> search_names({'Bob': {2000: 1, 2010: 2}, 'Alice': {2000: 1, 2010: 2}, 'Cindy': {2000: 2}, 'Yot': {2010: 1}, 'Zena':{2010: 1}}, 'A')
+    ['Alice', 'Zena']
+    >>> search_names({'Raaida': {2000: 1, 2010: 2}, 'Alice': {2000: 1, 2010: 2}, 'Saazzad': {2000: 2}, 'Yot': {2010: 1}, 'Aamir':{2010: 1}}, 'Aa')
+    ['Aamir', 'Raaida', 'Saazzad']
+    
     """
-    pass
+    name = []
+    for key in names:  # Loops through all the keys of the dictionary
+        if target.lower() in key.lower():  # Turns everything into lower case and looks if the substring is in key.
+            name.append(key)  # Adds everything to the list.
+    name.sort()  # Sorts the entire list.
+    return name
 
 
 def print_names(names):
