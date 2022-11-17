@@ -9,7 +9,6 @@ import sys
 import tkinter
 import babynames
 
-
 # Provided constants to load and draw the baby data
 FILENAMES = ['baby-1900.txt', 'baby-1910.txt', 'baby-1920.txt', 'baby-1930.txt',
              'baby-1940.txt', 'baby-1950.txt', 'baby-1960.txt', 'baby-1970.txt',
@@ -23,6 +22,7 @@ COLORS = ['red', 'purple', 'green', 'blue']
 TEXT_DX = 2
 LINE_WIDTH = 2
 MAX_RANK = 1000
+TOTAL_YEAR = len(YEARS)  # I just added this global constant, because it appears a lot of time later on.
 
 
 def index_to_x(width, year_index):
@@ -30,7 +30,9 @@ def index_to_x(width, year_index):
     Given canvas width and year_index 0, 1, 2 .. into YEARS list,
     return the x value for the vertical line for that year.
     """
-    pass
+
+    x = (year_index / (TOTAL_YEAR - 1)) * (width - 1)
+    return x
 
 
 def draw_fixed(canvas):
@@ -40,7 +42,14 @@ def draw_fixed(canvas):
     canvas.delete('all')
     width = canvas.winfo_width()
     height = canvas.winfo_height()
-    pass
+
+    canvas.create_line(SPACE, SPACE, width - 1 - SPACE, SPACE)  # The Top horizontal line
+    canvas.create_line(SPACE, height - 1 - SPACE, width - 1 - SPACE, height - 1 - SPACE)  # The bottom horizontal line
+    for i in range(TOTAL_YEAR):
+        x = index_to_x(width, i)
+        canvas.create_line(SPACE + x, 0, SPACE + x, height - 1)  # Vertical line argument.
+        canvas.create_text(SPACE + x + 2, height - 1 - SPACE, text=YEARS[i], anchor=tkinter.NW, fill='blue')  # Text
+        # I just added extra 2 to the argument because it makes it look more neat.
 
 
 def best_rank(names, name, year):
