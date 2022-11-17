@@ -66,7 +66,12 @@ def best_rank(names, name, year):
     >>> best_rank({'Abe': {1900: 100}}, 'Alice', 1900)
     1000
     """
-    pass
+    if name in names:
+        if year in names[name]:
+            sub_dict = names[name]  # assigning the sub dictionary to a variable.
+            rank = sub_dict[year]
+            return rank
+    return MAX_RANK
 
 
 def draw_name(canvas, names, name, color):
@@ -76,7 +81,21 @@ def draw_name(canvas, names, name, color):
     """
     width = canvas.winfo_width()
     height = canvas.winfo_height()
-    pass
+
+    for i in reversed(range(TOTAL_YEAR)):  # Reversing the range to use predictive lining.
+        # Subject Point
+        rank = best_rank(names, name, YEARS[i])
+        x = index_to_x(width, i)
+        y = ((height - 1 - SPACE * 2) / 999) * (rank - 1)  # The equation to derive the amount that would be incremented
+        # Future Point
+        if i != 0:  # To handle the edge case.
+            next_rank = best_rank(names, name, YEARS[i - 1])
+            next_x = index_to_x(width, i - 1)
+            next_y = ((height - 1 - SPACE * 2) / 999) * (next_rank - 1)
+        # Drawing line, and classifying it.
+        canvas.create_line(SPACE + x, SPACE + y, SPACE + next_x, SPACE + next_y, width=LINE_WIDTH, fill=color)
+        canvas.create_text(SPACE + x + 3, SPACE + y, text=name + ' ' + str(rank), anchor=tkinter.SW, fill=color)
+        # Added 3 to the x_axis for aesthetics.
 
 
 def draw_names(canvas, names, lookups):
@@ -85,16 +104,9 @@ def draw_names(canvas, names, lookups):
     Draw the data for the lookups on the canvas.
     """
     draw_fixed(canvas)
-
-    # Jennifer dev-mode - set to False and/or delete these lines
-    # for part (d)
-    if True:
-        name = 'Jennifer'
-        if len(lookups) > 0:
-            name = lookups[0]
-        draw_name(canvas, names, name, 'red')
-        return
-    pass
+    for i in range(len(lookups)):
+        draw_name(canvas, names, lookups[i], COLORS[i % 4])
+    return
 
 
 def upper_name(name):
