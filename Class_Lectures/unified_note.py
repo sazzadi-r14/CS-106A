@@ -90,3 +90,21 @@ while i < len(s):
     result += s[i] + s[i]
     i += 1
 return result
+
+
+
+
+dict.keys()
+
+returns a list of the keys
+
+dict.values()
+
+returs alist of values
+
+dict.items()
+
+returns a list of dictionary in tuples 
+
+
+ 
