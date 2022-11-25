@@ -106,5 +106,8 @@ dict.items()
 
 returns a list of dictionary in tuples 
 
+# Assigning values to two variables in during a loop
 
- 
+for key, value in sorted(d.items()):
+    print(key, value)
+    
