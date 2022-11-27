@@ -4,9 +4,7 @@ def main():
     k = ''
     k = l * 2
     print(k)
-    
 
 
 if __name__ == '__main__':
     main()
-    
