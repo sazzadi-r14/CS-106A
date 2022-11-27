@@ -96,7 +96,7 @@ def search_names(names, target):
     for key in names:  # Loops through all the keys of the dictionary
         if target.lower() in key.lower():  # Turns everything into lower case and looks if the substring is in key.
             name.append(key)  # Adds everything to the list.
-    name.sort()  # Sorts the entire list.
+    name.sort()  # Sorts the entire list. 
     return name
 
 
