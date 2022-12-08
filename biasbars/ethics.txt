@@ -1,1 +1,23 @@
-Replace this with your answers to the ethics problem
+1. Plotted Words - Strict, Rough, Stylish
+
+These are not the only words that I tested, but these words give a pretty good over arching idea of the situation. The hihger frequency of 
+certatin words appearing in Women's review more than man really testifies for some of the Stereotypes. Historically, female professors were 
+always viewed differently than the male professors, and this data is just a sneak peak into it. Words that give a strict, ot bossy vibe are 
+way more frequent in female professors rating than the males. Another awkward thing was, the mention of dress, and physical outlook was
+mentioned much more in female professors' review than male's. 
+
+2. Honestly it really depends on the methodology of the analyst. In the current situation it would be unfair. However, an analyst should be 
+well aware of the stereotypes, discrimantions, and biases in the data. The methodolody could be set in certain way to ensure the fairness 
+accourding to the lecture. 
+
+3 and 4. I believe that a students opinion in a professor's teaching system is pivotal to the professor's motivation, and teaching system. On a borader 
+sense a students opinion can really drive how a professor feels about their job. So, as a programmer I would not chose to give the data plainly how 
+it is. I would create filter in the middle that would ensure the opinion of the students are coming to the professor in a constructive manner. With 
+thorough understanding of the dataset, I would prefer developing an NLP Model, that would tone the opinion in such way where its not a hurtful or 
+destructive message for the professor, but if they were to get a critique, that should be passed on clearly as well. This can also be a great way 
+to adjust the discrimantion in gender, and make bring more gender neutral outputs. When desinging the website I would have a more clear option to 
+actually specify the gender. I would set the layers of my neural networks using that, so it brings an even optimized decsion. 
+
+5. In my expereince I have seen that people have a different lingo for writing a review about a STEM course, and a Humanities course. There is a difference
+of powerdynamic working in those situations. I would wanna visualize that through the data, and try to shed light on these issues. I believe acknowledign 
+this problem would open the gates for solving it, and which will enable us for a great interdisciplinary education. 

@@ -76,7 +76,9 @@ def plot_women_words(word_data, word, max_frequency):
     x_vals = [0, 1, 2]
 
     # YOUR CODE HERE to make a plot for the woman data for a given word. Add a title to the plot
-    pass
+    y_vals = [word_data[word]['W'][0], word_data[word]['W'][1], word_data[word]['W'][2]]
+    plt.bar(x_vals, y_vals, color="blue")
+    plt.title(word + " Used in Reviews about Women")
 
     # END OF YOUR CODE HERE. The code below is provided for you.
     plt.ylim((0, max_frequency + 500))  # sets the maximum y value for the plot
@@ -95,7 +97,9 @@ def plot_man_words(word_data, word, max_frequency):
     x_vals = [0, 1, 2]
 
     # YOUR CODE HERE to make a plot for the woman data for a given word. Add a title to the plot
-    pass
+    y_vals = [word_data[word]['M'][0], word_data[word]['M'][1], word_data[word]['M'][2]]
+    plt.bar(x_vals, y_vals, color="orange")
+    plt.title(word + " Used in Reviews about Men")
 
     # END OF YOUR CODE HERE. The code below is provided for you. Uncomment the last line when you are ready.
     plt.ylim((0, max_frequency + 500))  # sets the maximum y value for the plot
