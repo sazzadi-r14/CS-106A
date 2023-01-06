@@ -47,6 +47,20 @@ def get_word_to_prevs(words):
     return result
 
 
+def count_zips(filename):
+    states = {}
+with open(filename) as f:
+    for line in f:
+        line = line.strip()
+        big_lst = line.split(',')
+        if big_lst[0] not in states:
+            states[big_lst[0]] = {}
+        for i in range(1, len(big_lst)):
+            small_lst = big_lst[i].split('-')
+           fasf
+
+
+
 def main():
     args = sys.argv[1:]
     if len(args) == 1:
